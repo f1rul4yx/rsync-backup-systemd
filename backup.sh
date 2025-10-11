@@ -82,13 +82,13 @@ function backup_full() {
 }
 
 function backup_incremental() {
-  sudo rsync -aAXHv --delete --link-dest=/backup/full /etc /var /home /root /usr/local /opt /srv /boot /mnt/backup/incremental/$date/
+  sudo rsync -aAXHv --delete --link-dest=/mnt/backup/full /etc /var /home /root /usr/local /opt /srv /boot /mnt/backup/incremental/$date/
   sudo umount /mnt
 }
 
 function restore_backup() {
   read -p "Indica la fecha del día que quieres restaurar (YYYY-MM-DD): " restore_date
-  sudo rsync -aAXHv /mnt/incremental/$restore_date/ /
+  sudo rsync -aAXHv /mnt/backup/incremental/$restore_date/ /
   sudo umount /mnt
 }
 
