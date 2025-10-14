@@ -1,0 +1,7 @@
+[Unit]
+Description=Servicio de copia de seguridad automática
+After=network.target local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/local/bin/backup-system.sh

@@ -1,0 +1,10 @@
+[Unit]
+Description=Programación diaria del servicio de backup
+
+[Timer]
+OnCalendar=*-*-* 01:00:00
+Persistent=true
+Unit=backup.service
+
+[Install]
+WantedBy=timers.target
