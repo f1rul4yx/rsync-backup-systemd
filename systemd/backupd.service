@@ -1,0 +1,8 @@
+[Unit]
+Description=Servicio de copia de seguridad automática con rsync
+After=network.target local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/local/bin/backupd.sh
+User=root

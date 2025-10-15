@@ -1,0 +1,11 @@
+[Unit]
+Description=Temporizador diario para el servicio de backupd
+
+[Timer]
+# Ejecuta todos los días a la 1:00 AM
+OnCalendar=*-*-* 01:00:00
+Persistent=true
+Unit=backupd.service
+
+[Install]
+WantedBy=timers.target
