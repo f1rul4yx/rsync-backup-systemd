@@ -78,5 +78,6 @@ esac
 # PROGRAMA
 # -----------------------------------------
 
+verification_root
 disk_mount
 backup_restore
