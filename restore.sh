@@ -23,6 +23,14 @@ source "$CONFIG_FILE"
 # FUNCIONES DEFINIDAS
 # -----------------------------------------
 
+# Función: Comprobación root
+verification_root() {
+  if [[ "$EUID" -ne 0 ]]; then
+    echo -e "${ROJO}[-] Este script se debe ejecutar con permisos de root.${RESET}"
+    exit 1
+  fi
+}
+
 # Función: Comprobación y montaje disco
 disk_mount() {
   if [[ -z "$DISK" ]]; then
