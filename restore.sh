@@ -31,26 +31,6 @@ verification_root() {
   fi
 }
 
-# Función: Comprobación y montaje disco
-disk_mount() {
-  if [[ -z "$DISK" ]]; then
-    echo -e "${ROJO}[-] No se ha definido el dispositivo de backup en config.cfg${RESET}"
-    exit 1
-  fi
-  if [[ ! -b "$DISK" ]]; then
-    echo -e "${ROJO}[-] El dispositivo $DISK no existe o no es un bloque válido.${RESET}"
-    exit 1
-  fi
-  echo -e "${AZUL}[i] Montando dispositivo...${RESET}"
-  umount /mnt &>/dev/null
-  mount "$DISK" /mnt
-  if [[ $? -ne 0 ]]; then
-    echo -e "${ROJO}[-] El dispositivo ${DISK} no se ha podido montar correctamente en /mnt${RESET}"
-    exit 1
-  fi
-  echo -e "${VERDE}[+] Dispositivo montado correctamente.${RESET}"
-}
-
 # Función: Restauración de backup
 backup_restore() {
   echo "Copias disponibles:"
@@ -71,7 +51,6 @@ backup_restore() {
     echo -e "${ROJO}[-] No se restaurará el sistema.${RESET}"
   ;;
 esac
-  umount /mnt
 }
 
 # -----------------------------------------
@@ -79,5 +58,4 @@ esac
 # -----------------------------------------
 
 verification_root
-disk_mount
 backup_restore

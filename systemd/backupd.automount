@@ -2,7 +2,7 @@
 Description=Automontaje del disco de copias de seguridad
 
 [Automount]
-Where=/mnt/backup
+Where=/mnt
 
 [Install]
 WantedBy=multi-user.target

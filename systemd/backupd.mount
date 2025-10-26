@@ -3,7 +3,7 @@ Description=Montaje del disco de copias de seguridad
 
 [Mount]
 What=ruta_backups
-Where=/mnt/backup
+Where=/mnt
 Type=ext4
 Options=defaults
 

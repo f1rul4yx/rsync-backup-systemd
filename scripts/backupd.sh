@@ -34,26 +34,6 @@ install_rsync() {
   fi
 }
 
-# Función: Comprobación y montaje disco
-disk_mount() {
-  if [[ -z "$DISK" ]]; then
-    echo -e "${ROJO}[-] No se ha definido el dispositivo de backup en config.cfg${RESET}"
-    exit 1
-  fi
-  if [[ ! -b "$DISK" ]]; then
-    echo -e "${ROJO}[-] El dispositivo $DISK no existe o no es un bloque válido.${RESET}"
-    exit 1
-  fi
-  echo -e "${AZUL}[i] Montando dispositivo...${RESET}"
-  umount /mnt &>/dev/null
-  mount "$DISK" /mnt
-  if [[ $? -ne 0 ]]; then
-    echo -e "${ROJO}[-] El dispositivo ${DISK} no se ha podido montar correctamente en /mnt${RESET}"
-    exit 1
-  fi
-  echo -e "${VERDE}[+] Dispositivo montado correctamente.${RESET}"
-}
-
 # Función: Creación carpetas donde guardar los backups
 create_folders() {
   mkdir -p "$FULL_DIR" "$INC_DIR"
@@ -67,7 +47,6 @@ backup_full() {
   mkdir -p "$TARGET"
   rsync -aAXHv --delete "${BACKUP_DIRS[@]}" "$TARGET"
   echo -e "${VERDE}[+] Backup completo creado en $TARGET${RESET}"
-  umount /mnt
 }
 
 # Función: Crear backup incremental
@@ -84,7 +63,6 @@ backup_incremental() {
   mkdir -p "$TARGET"
   rsync -aAXHv --delete --link-dest="$LAST_BACKUP" "${BACKUP_DIRS[@]}" "$TARGET"
   echo -e "${VERDE}[+] Backup incremental creado en $TARGET${RESET}"
-  umount /mnt
 }
 
 # Función: Determinar tipo de copia (completa o incremental)
@@ -106,7 +84,6 @@ mkdir -p "$LOG_DIR/$DATE"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 install_rsync
-disk_mount
 create_folders
 
 BACKUP_TYPE=$(determine_backup_type)
