@@ -1,0 +1,11 @@
+[Unit]
+Description=Montaje del disco de copias de seguridad
+
+[Mount]
+What=ruta_backups
+Where=/mnt/backup
+Type=ext4
+Options=defaults
+
+[Install]
+WantedBy=multi-user.target

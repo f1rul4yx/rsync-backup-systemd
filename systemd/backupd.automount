@@ -1,0 +1,8 @@
+[Unit]
+Description=Automontaje del disco de copias de seguridad
+
+[Automount]
+Where=/mnt/backup
+
+[Install]
+WantedBy=multi-user.target
