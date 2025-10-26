@@ -20,7 +20,7 @@ install_all() {
   cp config/config.cfg /etc/backupd/ &>/dev/null
   cp systemd/* /etc/systemd/system/ &>/dev/null
   sed -i "s|ruta_backups|$DISK|g" /etc/backupd/config.cfg
-  sed -i "s|ruta_backups|$DISK|g" /etc/systemd/system/backupd.mount
+  sed -i "s|ruta_backups|$DISK|g" /etc/systemd/system/mnt-backupd.mount
   systemctl daemon-reload &>/dev/null &>/dev/null
   systemctl enable --now backupd.timer &>/dev/null
   systemctl enable --now mnt-backupd.automount &>/dev/null
