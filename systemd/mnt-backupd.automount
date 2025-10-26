@@ -3,6 +3,7 @@ Description=Automontaje del disco de copias de seguridad
 
 [Automount]
 Where=/mnt/backupd
+TimeoutIdleSec=300
 
 [Install]
 WantedBy=multi-user.target
