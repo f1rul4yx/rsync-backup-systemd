@@ -23,7 +23,7 @@ install_all() {
   sed -i "s|ruta_backups|$DISK|g" /etc/systemd/system/backupd.mount
   systemctl daemon-reload &>/dev/null &>/dev/null
   systemctl enable --now backupd.timer &>/dev/null
-  systemctl enable --now backupd.automount &>/dev/null
+  systemctl enable --now mnt-backupd.automount &>/dev/null
   echo -e "${VERDE}[+] El servicio se instalo correctamente.${RESET}"
 }
 

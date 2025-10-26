@@ -14,12 +14,12 @@ verification_root() {
 remove_all() {
   sudo systemctl stop backupd.service &>/dev/null
   sudo systemctl stop backupd.timer &>/dev/null
-  sudo systemctl stop backupd.mount &>/dev/null
-  sudo systemctl stop backupd.automount &>/dev/null
+  sudo systemctl stop mnt-backupd.mount &>/dev/null
+  sudo systemctl stop mnt-backupd.automount &>/dev/null
   sudo systemctl disable backupd.service &>/dev/null
   sudo systemctl disable backupd.timer &>/dev/null
-  sudo systemctl disable backupd.mount &>/dev/null
-  sudo systemctl disable backupd.automount &>/dev/null
+  sudo systemctl disable mnt-backupd.mount &>/dev/null
+  sudo systemctl disable mnt-backupd.automount &>/dev/null
   rm -r /etc/backupd
   rm -r /etc/systemd/system/backupd*
   rm -r /usr/local/bin/backupd.sh
