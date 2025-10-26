@@ -3,7 +3,7 @@
 # Restauración del sistema de backup
 # Autor: Diego Vargas
 # Fecha: 2025-10-16
-# Versión: 1.0
+# Versión: 1.1
 # =========================================
 
 

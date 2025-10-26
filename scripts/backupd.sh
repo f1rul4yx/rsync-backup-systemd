@@ -3,7 +3,7 @@
 # Sistema de backup con rsync y systemd
 # Autor: Diego Vargas
 # Fecha: 2025-10-15
-# Versión: 1.0
+# Versión: 1.1
 # =========================================
 
 
