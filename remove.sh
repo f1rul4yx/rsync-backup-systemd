@@ -22,6 +22,7 @@ remove_all() {
   sudo systemctl disable mnt-backupd.automount &>/dev/null
   rm -r /etc/backupd
   rm -r /etc/systemd/system/backupd*
+  rm -r /etc/systemd/system/mnt-backupd*
   rm -r /usr/local/bin/backupd.sh
   systemctl daemon-reload &>/dev/null
   echo -e "${VERDE}[+] El servicio se desinstalo correctamente.${RESET}"
